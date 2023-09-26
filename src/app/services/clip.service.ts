@@ -56,8 +56,13 @@ public clipsCollection: AngularFirestoreCollection<IClip>
   }
 
   async deleteClip(clip: IClip) {
-    const clipRef = this.storage.ref(`clips/${clip.fileName}`) //reference to the file
+    const clipRef = this.storage.ref(`clips/${clip.fileName}`) 
+    const screenshotRef = this.storage.ref(
+      `screenshots/${clip.screenshotFileName}`
+    )
     await clipRef.delete() 
+    await screenshotRef.delete()
+
     await this.clipsCollection.doc(clip.docID).delete()
   }
 }
