@@ -7,14 +7,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { switchMap, map } from 'rxjs/operators';
 import { of, BehaviorSubject, combineLatest, lastValueFrom } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { 
-  Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router 
-} from "@angular/router";
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClipService implements Resolve<IClip | null> {
+export class ClipService  {
   public clipsCollection: AngularFirestoreCollection<IClip>
   pageClips: IClip[] = [] //
   pendingReq = false 
